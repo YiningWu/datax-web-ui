@@ -2,7 +2,6 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
-
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
@@ -19,7 +18,9 @@ service.interceptors.request.use(
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
-      config.headers['Authorization'] = getToken()
+      const tokenstr = getToken()
+      const Authorization = tokenstr.indexOf('Bearer') > -1 ? tokenstr : `Bearer ${tokenstr}`
+      config.headers['Authorization'] = Authorization
     }
     return config
   },

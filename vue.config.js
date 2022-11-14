@@ -22,7 +22,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
+  publicPath: '/dataxweb',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -37,17 +37,17 @@ module.exports = {
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       //代理 /dev-api/api 到 http://localhost:8066/api
-      [process.env.VUE_APP_API]: {
-        target: `http://192.168.30.105:9527/api`,
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_API]: ''
-        }
-      },
+      // [process.env.VUE_APP_API]: {
+      //   target: `http://192.168.30.102:93`,
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     ['^' + process.env.VUE_APP_API]: ''
+      //   }
+      // },
       // mock 的代理
       // change xxx-api/login => mock/login
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:${port}/mock`,
+        target: `http://192.168.30.102:93`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
